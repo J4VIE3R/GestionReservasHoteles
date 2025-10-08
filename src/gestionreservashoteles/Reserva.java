@@ -1,7 +1,7 @@
-
 package gestionreservashoteles;
 
 public class Reserva {
+
     private Hotel hotel;
     private Habitacion habitacionReservada;
 
@@ -28,8 +28,5 @@ public class Reserva {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
-    
-    
-    
-    
+
 }

@@ -1,8 +1,7 @@
-
 package gestionreservashoteles;
 
-
 public class Habitacion {
+
     private String numeroHabitacion;
     private Double precioNoche;
     private Boolean disponible;
@@ -40,6 +39,4 @@ public class Habitacion {
         this.precioNoche = precioNoche;
     }
 
-   
-    
 }

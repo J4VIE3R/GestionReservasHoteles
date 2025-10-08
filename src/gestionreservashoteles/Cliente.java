@@ -1,15 +1,14 @@
-
 package gestionreservashoteles;
 
 import java.util.ArrayList;
 
-
-
 public class Cliente {
+
     private String idCliente;
     private String nombre;
     private ArrayList<Reserva> reservasRealizadas;
     
+    private static ArrayList<Cliente> listaClientes;
 
     public Cliente() {
     }
@@ -44,11 +43,42 @@ public class Cliente {
         this.nombre = nombre;
     }
     
-    
-  
- 
-
-}
+     public static Cliente buscarOCrearCliente(String rut, String nombre) {
+        for (Cliente c : listaClientes) {
+            if (c.getIdCliente().equals(rut)) {
+                return c;  // Ya existe, retornarlo
+            }
+        }
         
+
+        Cliente nuevoCliente = new Cliente(rut, nombre);
+        listaClientes.add(nuevoCliente);
+        return nuevoCliente;
+    }
     
+
+    public static void mostrarCliente(String nombreBuscado) {
+        for (Cliente c : listaClientes) {
+            if (c.getNombre().equalsIgnoreCase(nombreBuscado)) {
+                System.out.println("\n=== Cliente: " + c.getNombre() + " ===");
+                System.out.println("RUT: " + c.getIdCliente());
+                System.out.println("\nReservas:");
+                
+                for (Reserva r : c.getReservasRealizadas()) {
+                    System.out.println("- Hotel: " + r.getHotel().getNombre());
+                    System.out.println("  Habitacion: " + r.getHabitacionReservada().getNumeroHabitacion());
+                    System.out.println("  Precio: $" + r.getHabitacionReservada().getPrecioNoche());
+                    System.out.println();
+                }
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado");
+    }
+    
+    public void agregarReserva(Reserva reserva) {
+        this.reservasRealizadas.add(reserva);
+    }
+}
+
 

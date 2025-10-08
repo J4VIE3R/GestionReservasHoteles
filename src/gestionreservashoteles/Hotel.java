@@ -52,19 +52,16 @@ public class Hotel {
         }
 
     }
-    
-    public void recerbaHabitacion(String numeroHabitacion){
-        for (Habitacion h : this.habitacionesDisponibles ){
+
+    public void recerbaHabitacion(String numeroHabitacion) {
+        for (Habitacion h : this.habitacionesDisponibles) {
             if (h.getNumeroHabitacion().equals(numeroHabitacion)) {
                 h.setDisponible(false);
-                
-                
-                
+
             }
-        
+
         }
-    
+
     }
-    
 
 }
