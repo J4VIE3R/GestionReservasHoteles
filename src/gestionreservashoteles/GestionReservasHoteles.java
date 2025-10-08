@@ -89,6 +89,8 @@ public class GestionReservasHoteles {
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
                         Cliente cliente = new Cliente(numRut, nombreCliente);
+                        
+                        Cliente cliente = new Cliente(numRut, nombreCliente);
                     }
                     if (opcionHotel == 2) {
 
