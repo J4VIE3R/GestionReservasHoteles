@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class GestionReservasHoteles {
 
+    static ArrayList<Cliente> listaClientes = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -12,25 +14,25 @@ public class GestionReservasHoteles {
         ArrayList<Habitacion> listaHabitacionesHotel2 = new ArrayList<>();
         int opcion = 0;
 
-        Habitacion habitacion1 = new Habitacion("1", 145.000, true);
-        Habitacion habitacion2 = new Habitacion("2", 145.000, true);
-        Habitacion habitacion3 = new Habitacion("3", 145.000, true);
-        Habitacion habitacion4 = new Habitacion("4", 145.000, true);
-        Habitacion habitacion5 = new Habitacion("5", 145.000, true);
-        Habitacion habitacion6 = new Habitacion("6", 145.000, true);
-        Habitacion habitacion7 = new Habitacion("7", 145.000, true);
-        Habitacion habitacion8 = new Habitacion("8", 145.000, true);
-        Habitacion habitacion9 = new Habitacion("9", 145.000, true);
+        Habitacion habitacion1 = new Habitacion("1", 145000.0, true);
+        Habitacion habitacion2 = new Habitacion("2", 145000.0, true);
+        Habitacion habitacion3 = new Habitacion("3", 145000.0, true);
+        Habitacion habitacion4 = new Habitacion("4", 145000.0, true);
+        Habitacion habitacion5 = new Habitacion("5", 145000.0, true);
+        Habitacion habitacion6 = new Habitacion("6", 145000.0, true);
+        Habitacion habitacion7 = new Habitacion("7", 145000.0, true);
+        Habitacion habitacion8 = new Habitacion("8", 145000.0, true);
+        Habitacion habitacion9 = new Habitacion("9", 145000.0, true);
 
-        Habitacion habitacion11 = new Habitacion("1", 55.000, true);
-        Habitacion habitacion12 = new Habitacion("2", 55.000, true);
-        Habitacion habitacion13 = new Habitacion("3", 55.000, true);
-        Habitacion habitacion14 = new Habitacion("4", 55.000, true);
-        Habitacion habitacion15 = new Habitacion("5", 55.000, true);
-        Habitacion habitacion16 = new Habitacion("6", 55.000, true);
-        Habitacion habitacion17 = new Habitacion("7", 55.000, true);
-        Habitacion habitacion18 = new Habitacion("8", 55.000, true);
-        Habitacion habitacion19 = new Habitacion("9", 55.000, true);
+        Habitacion habitacion11 = new Habitacion("1", 55000.0, true);
+        Habitacion habitacion12 = new Habitacion("2", 55000.0, true);
+        Habitacion habitacion13 = new Habitacion("3", 55000.0, true);
+        Habitacion habitacion14 = new Habitacion("4", 55000.0, true);
+        Habitacion habitacion15 = new Habitacion("5", 55000.0, true);
+        Habitacion habitacion16 = new Habitacion("6", 55000.0, true);
+        Habitacion habitacion17 = new Habitacion("7", 55000.0, true);
+        Habitacion habitacion18 = new Habitacion("8", 55000.0, true);
+        Habitacion habitacion19 = new Habitacion("9", 55000.0, true);
 
         listaHabitacionesHotel1.add(habitacion1);
         listaHabitacionesHotel1.add(habitacion2);
@@ -69,38 +71,30 @@ public class GestionReservasHoteles {
                 case 1:
                     System.out.println("*****REALIZAR RESERVA*****");
                     System.out.println("Selecione Hotel\n");
+                    
+                    /*SELECION DE HOTEL*/
                     System.out.println("1." + hotel1.getNombre());
                     System.out.println("2." + hotel2.getNombre());
                     int opcionHotel = input.nextInt();
+
                     if (opcionHotel == 1) {
                         System.out.println("Seleciono el Hotel" + hotel1.getNombre() + "\n");
-
-                        for (Habitacion h : hotel1.getHabitacionesDisponibles()) {
-                            System.out.println("Habitacion " + h.getNumeroHabitacion() + "  $" + h.getPrecioNoche());
-
-                        }
+                        hotel1.habitacionesDisponible();
                         System.out.println("Ingrese el numero de habitacion a reservar");
                         String numHabitacion = input.next();
-                        ArrayList<Habitacion> listaHabitacionCliente1 = new ArrayList<>();
+                        hotel1.recerbaHabitacion(numHabitacion);
+                        
+                        Reserva reservaCliente1 = new Reserva(hotel1,);
+                        
                         
                         System.out.println("Ingrese su rut");
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
+                        Cliente cliente = new Cliente(numRut, nombreCliente, reservaCliente1);
+                    }
+                    if (opcionHotel == 2) {
 
-                    } else if (opcionHotel == 2) {
-                        System.out.println("Seleciono el Hotel" + hotel2.getNombre() + "\n");
-
-                        for (Habitacion h : hotel2.getHabitacionesDisponibles()) {
-                            System.out.println("Habitacion " + h.getNumeroHabitacion() + "  $" + h.getPrecioNoche());
-
-                        }
-                        System.out.println("Ingrese el numero de habitacion a reservar");
-                        String numHabitacion = input.next();
-                        System.out.println("Ingrese su rut");
-                        String numRut = input.next();
-                        System.out.println("Ingrese su nombre");
-                        String nombreCliente = input.next();
                     }
 
             }

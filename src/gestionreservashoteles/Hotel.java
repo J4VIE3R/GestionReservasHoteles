@@ -1,13 +1,12 @@
-
 package gestionreservashoteles;
 
 import java.util.ArrayList;
 
-
 public class Hotel {
+
     private String idHotel;
     private String nombre;
-    private ArrayList <Habitacion>habitacionesDisponibles;
+    private ArrayList<Habitacion> habitacionesDisponibles;
 
     public Hotel() {
     }
@@ -18,11 +17,11 @@ public class Hotel {
         this.habitacionesDisponibles = habitacionesDisponibles;
     }
 
-    public ArrayList <Habitacion> getHabitacionesDisponibles() {
+    public ArrayList<Habitacion> getHabitacionesDisponibles() {
         return habitacionesDisponibles;
     }
 
-    public void setHabitacionesDisponibles(ArrayList <Habitacion> habitacionesDisponibles) {
+    public void setHabitacionesDisponibles(ArrayList<Habitacion> habitacionesDisponibles) {
         this.habitacionesDisponibles = habitacionesDisponibles;
     }
 
@@ -41,6 +40,31 @@ public class Hotel {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void habitacionesDisponible() {
+        for (Habitacion h : this.habitacionesDisponibles) {
+            if (h.getDisponible().equals(true)) {
+                /*(h.getDisponible())  HACE LOS MISMO?? */
+                System.out.println("Habitacion " + h.getNumeroHabitacion());
+
+            }
+
+        }
+
+    }
     
+    public void recerbaHabitacion(String numeroHabitacion){
+        for (Habitacion h : this.habitacionesDisponibles ){
+            if (h.getNumeroHabitacion().equals(numeroHabitacion)) {
+                h.setDisponible(false);
+                
+                
+                
+            }
+        
+        }
     
+    }
+    
+
 }

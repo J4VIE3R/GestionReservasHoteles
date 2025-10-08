@@ -16,7 +16,7 @@ public class Cliente {
     public Cliente(String idCliente, String nombre, ArrayList<Reserva> reservasRealizadas) {
         this.idCliente = idCliente;
         this.nombre = nombre;
-        this.reservasRealizadas = reservasRealizadas;
+        this.reservasRealizadas = new ArrayList<>();
     }
 
     public ArrayList<Reserva> getReservasRealizadas() {
@@ -42,6 +42,7 @@ public class Cliente {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
     
     
     
