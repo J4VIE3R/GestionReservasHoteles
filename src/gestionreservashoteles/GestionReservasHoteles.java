@@ -3,6 +3,7 @@ package gestionreservashoteles;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import jdk.jshell.ImportSnippet;
 
 
 public class GestionReservasHoteles {
@@ -10,8 +11,10 @@ public class GestionReservasHoteles {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        ArrayList<Habitacion> listaHabitaciones = new ArrayList<>(); 
+        ArrayList<Habitacion> listaHabitacionesHotel1 = new ArrayList<>();
+        ArrayList<Habitacion> listaHabitacionesHotel2 = new ArrayList<>(); 
         int opcion = 0;
+        
         
         Habitacion habitacion1 = new Habitacion("1", 45.00, true);
         Habitacion habitacion2 = new Habitacion("2", 45.00, true);
@@ -24,23 +27,44 @@ public class GestionReservasHoteles {
         Habitacion habitacion9 = new Habitacion("9", 45.00, true);
         Habitacion habitacion10 = new Habitacion("10", 45.00, true);
         
-        listaHabitaciones.add(habitacion1);
-        listaHabitaciones.add(habitacion2);
-        listaHabitaciones.add(habitacion3);
-        listaHabitaciones.add(habitacion4);
-        listaHabitaciones.add(habitacion5);
-        listaHabitaciones.add(habitacion6);
-        listaHabitaciones.add(habitacion7);
-        listaHabitaciones.add(habitacion8);
-        listaHabitaciones.add(habitacion9);
-        listaHabitaciones.add(habitacion10);
-
-        Hotel hotel1 = new Hotel("01", "Burj Al Arab",listaHabitaciones);
-        Hotel hotel2 = new Hotel("02", "Emirates Palace",listaHabitaciones);
-        Hotel hotel3 = new Hotel("03", "Seven Stars Galleria",listaHabitaciones);
-        Hotel hotel4 = new Hotel("04", "Hotel Savoy",listaHabitaciones);
+        Habitacion habitacion11 = new Habitacion("1", 45.00, true);
+        Habitacion habitacion12 = new Habitacion("2", 45.00, true);
+        Habitacion habitacion13 = new Habitacion("3", 45.00, true);
+        Habitacion habitacion14 = new Habitacion("4", 45.00, true);
+        Habitacion habitacion15 = new Habitacion("5", 45.00, true);
+        Habitacion habitacion16 = new Habitacion("6", 45.00, true);
+        Habitacion habitacion17 = new Habitacion("7", 45.00, true);
+        Habitacion habitacion18 = new Habitacion("8", 45.00, true);
+        Habitacion habitacion19 = new Habitacion("9", 45.00, true);
+        Habitacion habitacion20 = new Habitacion("10", 45.00, true);
+        
+        listaHabitacionesHotel1.add(habitacion1);
+        listaHabitacionesHotel1.add(habitacion2);
+        listaHabitacionesHotel1.add(habitacion3);
+        listaHabitacionesHotel1.add(habitacion4);
+        listaHabitacionesHotel1.add(habitacion5);
+        listaHabitacionesHotel1.add(habitacion6);
+        listaHabitacionesHotel1.add(habitacion7);
+        listaHabitacionesHotel1.add(habitacion8);
+        listaHabitacionesHotel1.add(habitacion9);
+        listaHabitacionesHotel1.add(habitacion10);
+        
+        listaHabitacionesHotel2.add(habitacion11);
+        listaHabitacionesHotel2.add(habitacion12);
+        listaHabitacionesHotel2.add(habitacion13);
+        listaHabitacionesHotel2.add(habitacion14);
+        listaHabitacionesHotel2.add(habitacion15);
+        listaHabitacionesHotel2.add(habitacion16);
+        listaHabitacionesHotel2.add(habitacion17);
+        listaHabitacionesHotel2.add(habitacion18);
+        listaHabitacionesHotel2.add(habitacion19);
+        listaHabitacionesHotel2.add(habitacion20); 
 
         
+        Hotel hotel1 = new Hotel("01", "Burj Al Arab", listaHabitacionesHotel1);
+        Hotel hotel2 = new Hotel("02", "Emirates Palace", listaHabitacionesHotel2);
+   
+
         do {
             System.out.println("*****BIENVENIDO A RESERVAS DE HOTELES*****");
             System.out.println("1.Realizar Reserva");
@@ -50,11 +74,28 @@ public class GestionReservasHoteles {
             System.out.println("5.Exit");
             System.out.println("Selecione una opcion:  ");
             opcion = input.nextInt();
-            
+            String Imp;
             switch(opcion){
                 case 1:
-                    System.out.println();
-            
+                    System.out.println("*****REALIZAR RESERVA*****");
+                    System.out.println("Selecione Hotel\n");
+                        System.out.println("1."+hotel1.getNombre());
+                        System.out.println("2."+hotel2.getNombre());
+                        int opcionHotel = input.nextInt();
+                        if (opcionHotel == 1) {
+                            System.out.println("Seleciono el Hotel"+hotel1.getNombre());
+                            for(Imp :hotel1.getHabitacionesDisponibles(){
+                                
+                            
+                            }
+                            } 
+                                
+                         if (opcionHotel == 2) {
+                            System.out.println("Seleciono el Hotel"+hotel2.getNombre());
+
+                    }
+                           
+                        
             
             }
             
