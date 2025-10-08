@@ -9,6 +9,7 @@ public class Cliente {
     private String idCliente;
     private String nombre;
     private ArrayList<Reserva> reservasRealizadas;
+    
 
     public Cliente() {
     }
@@ -44,6 +45,10 @@ public class Cliente {
     }
     
     
-    
-    
+  
+ 
+
 }
+        
+    
+

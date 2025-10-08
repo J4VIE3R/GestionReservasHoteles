@@ -5,7 +5,9 @@ import java.util.Scanner;
 
 public class GestionReservasHoteles {
 
-    static ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+    
+
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -61,8 +63,6 @@ public class GestionReservasHoteles {
             System.out.println("*****BIENVENIDO A RESERVAS DE HOTELES*****");
             System.out.println("1.Realizar Reserva");
             System.out.println("2.Segimiento De Reserva");
-            System.out.println("");
-            System.out.println("");
             System.out.println("5.Exit");
             System.out.println("Selecione una opcion:  ");
             opcion = input.nextInt();
@@ -71,7 +71,7 @@ public class GestionReservasHoteles {
                 case 1:
                     System.out.println("*****REALIZAR RESERVA*****");
                     System.out.println("Selecione Hotel\n");
-                    
+
                     /*SELECION DE HOTEL*/
                     System.out.println("1." + hotel1.getNombre());
                     System.out.println("2." + hotel2.getNombre());
@@ -82,20 +82,59 @@ public class GestionReservasHoteles {
                         hotel1.habitacionesDisponible();
                         System.out.println("Ingrese el numero de habitacion a reservar");
                         String numHabitacion = input.next();
+
+                        Habitacion habitacionSeleccionada = null;
+                        for (Habitacion h : hotel1.getHabitacionesDisponibles()) {
+                            if (h.getNumeroHabitacion().equals(numHabitacion)) {
+                                habitacionSeleccionada = h;
+                                break;
+                            }
+                        }
                         hotel1.recerbaHabitacion(numHabitacion);
-                        
+
                         System.out.println("Ingrese su rut");
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
                         Cliente cliente = new Cliente(numRut, nombreCliente);
-                        
-                        Cliente cliente = new Cliente(numRut, nombreCliente);
+                        Reserva reservaCliente1 = new Reserva(hotel1, habitacionSeleccionada);
+                        cliente.getReservasRealizadas().add(reservaCliente1);
+                        listaClientes.add(cliente);
+                        System.out.println("Reserva realizada correctamennte\n");
+
                     }
                     if (opcionHotel == 2) {
+                        System.out.println("Seleciono el Hotel" + hotel2.getNombre() + "\n");
+                        hotel2.habitacionesDisponible();
+                        System.out.println("Ingrese el numero de habitacion a reservar");
+                        String numHabitacion = input.next();
 
+                        Habitacion habitacionSeleccionada = null;
+                        for (Habitacion h : hotel2.getHabitacionesDisponibles()) {
+                            if (h.getNumeroHabitacion().equals(numHabitacion)) {
+                                habitacionSeleccionada = h;
+                                break;
+                            }
+                        }
+                        hotel2.recerbaHabitacion(numHabitacion);
+
+                        System.out.println("Ingrese su rut");
+                        String numRut = input.next();
+                        System.out.println("Ingrese su nombre");
+                        String nombreCliente = input.next();
+                        Cliente cliente = new Cliente(numRut, nombreCliente);
+                        Reserva reservaCliente2 = new Reserva(hotel2, habitacionSeleccionada);
+                        cliente.getReservasRealizadas().add(reservaCliente2);
+                        listaClientes.add(cliente);
+                        System.out.println("Reserva realizada correctamennte\n");
+                        
+                  
+                        
+                        
                     }
-
+                  case 2:
+                      
+                      
             }
 
         } while (opcion != 5);
