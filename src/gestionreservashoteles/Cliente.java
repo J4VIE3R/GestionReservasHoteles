@@ -13,7 +13,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String idCliente, String nombre, ArrayList<Reserva> reservasRealizadas) {
+    public Cliente(String idCliente, String nombre) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.reservasRealizadas = new ArrayList<>();

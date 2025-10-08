@@ -84,14 +84,11 @@ public class GestionReservasHoteles {
                         String numHabitacion = input.next();
                         hotel1.recerbaHabitacion(numHabitacion);
                         
-                        Reserva reservaCliente1 = new Reserva(hotel1,);
-                        
-                        
                         System.out.println("Ingrese su rut");
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
-                        Cliente cliente = new Cliente(numRut, nombreCliente, reservaCliente1);
+                        Cliente cliente = new Cliente(numRut, nombreCliente);
                     }
                     if (opcionHotel == 2) {
 
