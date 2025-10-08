@@ -5,9 +5,7 @@ import java.util.Scanner;
 
 public class GestionReservasHoteles {
 
-
-    
-
+    static ArrayList<Cliente> listaClientes = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -63,7 +61,7 @@ public class GestionReservasHoteles {
             System.out.println("*****BIENVENIDO A RESERVAS DE HOTELES*****");
             System.out.println("1.Realizar Reserva");
             System.out.println("2.Segimiento De Reserva");
-            System.out.println("5.Exit");
+            System.out.println("3.Exit");
             System.out.println("Selecione una opcion:  ");
             opcion = input.nextInt();
 
@@ -96,13 +94,13 @@ public class GestionReservasHoteles {
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
-                        Cliente cliente = new Cliente(numRut, nombreCliente);
+                        Cliente cliente = buscarOCrearCliente(listaClientes, numRut, nombreCliente);
                         Reserva reservaCliente1 = new Reserva(hotel1, habitacionSeleccionada);
                         cliente.getReservasRealizadas().add(reservaCliente1);
-                        listaClientes.add(cliente);
                         System.out.println("Reserva realizada correctamennte\n");
-
+                    break;
                     }
+                    
                     if (opcionHotel == 2) {
                         System.out.println("Seleciono el Hotel" + hotel2.getNombre() + "\n");
                         hotel2.habitacionesDisponible();
@@ -113,7 +111,7 @@ public class GestionReservasHoteles {
                         for (Habitacion h : hotel2.getHabitacionesDisponibles()) {
                             if (h.getNumeroHabitacion().equals(numHabitacion)) {
                                 habitacionSeleccionada = h;
-                                break;
+                                
                             }
                         }
                         hotel2.recerbaHabitacion(numHabitacion);
@@ -122,24 +120,58 @@ public class GestionReservasHoteles {
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
-                        Cliente cliente = new Cliente(numRut, nombreCliente);
+                        Cliente cliente = buscarOCrearCliente(listaClientes, numRut, nombreCliente);
                         Reserva reservaCliente2 = new Reserva(hotel2, habitacionSeleccionada);
                         cliente.getReservasRealizadas().add(reservaCliente2);
-                        listaClientes.add(cliente);
                         System.out.println("Reserva realizada correctamennte\n");
-                        
-                  
-                        
-                        
+                        break;
+
                     }
-                  case 2:
-                      
-                      
+                case 2:
+                    System.out.println("*****SEGUIMIENTO DE RESERVA*****");
+                    System.out.println("Ingrese el nombre del cliente:");
+                    input.nextLine(); // Limpiar buffer
+                    String nombreBuscar = input.nextLine();
+                    mostrarCliente(listaClientes, nombreBuscar);
+                    break;
+
             }
 
-        } while (opcion != 5);
+        } while (opcion != 3);
         System.out.println("Gracias por su visita <3");
 
+    }
+
+    public static Cliente buscarOCrearCliente(ArrayList<Cliente> lista, String rut, String nombre) {
+
+        for (Cliente c : lista) {
+            if (c.getIdCliente().equals(rut)) {
+                return c;
+            }
+        }
+
+        Cliente nuevoCliente = new Cliente(rut, nombre);
+        lista.add(nuevoCliente);
+        return nuevoCliente;
+    }
+
+    public static void mostrarCliente(ArrayList<Cliente> lista, String nombreBuscado) {
+        for (Cliente c : lista) {
+            if (c.getNombre().equalsIgnoreCase(nombreBuscado)) {
+                System.out.println("\n=== Cliente: " + c.getNombre() + " ===");
+                System.out.println("RUT: " + c.getIdCliente());
+                System.out.println("\nReservas:");
+
+                for (Reserva r : c.getReservasRealizadas()) {
+                    System.out.println("- Hotel: " + r.getHotel().getNombre());
+                    System.out.println("  Habitacion: " + r.getHabitacionReservada().getNumeroHabitacion());
+                    System.out.println("  Precio: $" + r.getHabitacionReservada().getPrecioNoche());
+                    System.out.println();
+                }
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado");
     }
 
 }
