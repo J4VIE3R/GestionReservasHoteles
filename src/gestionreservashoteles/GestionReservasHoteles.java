@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class GestionReservasHoteles {
 
-    static ArrayList<Cliente> listaClientes = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -68,7 +67,7 @@ public class GestionReservasHoteles {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("*****REALIZAR RESERVA*****");
+                    System.out.println("*****REALIZAR RESERVA*****l\n");
                     System.out.println("Selecione Hotel\n");
                     System.out.println("1." + hotel1.getNombre());
                     System.out.println("2." + hotel2.getNombre());
@@ -93,7 +92,7 @@ public class GestionReservasHoteles {
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
-                        Cliente cliente = buscarOCrearCliente(listaClientes, numRut, nombreCliente);
+                        Cliente cliente = Cliente.buscarOCrearCliente(numRut, nombreCliente);
                         Reserva reservaCliente1 = new Reserva(hotel1, habitacionSeleccionada);
                         cliente.getReservasRealizadas().add(reservaCliente1);
                         System.out.println("Reserva realizada correctamennte\n");
@@ -119,7 +118,7 @@ public class GestionReservasHoteles {
                         String numRut = input.next();
                         System.out.println("Ingrese su nombre");
                         String nombreCliente = input.next();
-                        Cliente cliente = buscarOCrearCliente(listaClientes, numRut, nombreCliente);
+                        Cliente cliente = Cliente.buscarOCrearCliente(numRut, nombreCliente);
                         Reserva reservaCliente2 = new Reserva(hotel2, habitacionSeleccionada);
                         cliente.getReservasRealizadas().add(reservaCliente2);
                         System.out.println("Reserva realizada correctamennte\n");
@@ -129,9 +128,9 @@ public class GestionReservasHoteles {
                 case 2:
                     System.out.println("*****SEGUIMIENTO DE RESERVA*****");
                     System.out.println("Ingrese el nombre del cliente:");
-                    input.nextLine(); // Limpiar buffer
+                    input.nextLine();
                     String nombreBuscar = input.nextLine();
-                    mostrarCliente(listaClientes, nombreBuscar);
+                    Cliente.mostrarCliente(nombreBuscar);
                     break;
 
             }

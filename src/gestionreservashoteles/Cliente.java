@@ -8,7 +8,7 @@ public class Cliente {
     private String nombre;
     private ArrayList<Reserva> reservasRealizadas;
     
-    private static ArrayList<Cliente> listaClientes;
+    private static ArrayList<Cliente> listaClientes = new ArrayList<>(); 
 
     public Cliente() {
     }
@@ -46,11 +46,9 @@ public class Cliente {
      public static Cliente buscarOCrearCliente(String rut, String nombre) {
         for (Cliente c : listaClientes) {
             if (c.getIdCliente().equals(rut)) {
-                return c;  // Ya existe, retornarlo
+                return c;
             }
         }
-        
-
         Cliente nuevoCliente = new Cliente(rut, nombre);
         listaClientes.add(nuevoCliente);
         return nuevoCliente;
